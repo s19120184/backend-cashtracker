@@ -3,6 +3,7 @@ import { User } from "../models/User";
 import { checkPassword, generateToken, hashPassword } from "../utils/auth";
 import { AuthEmail } from "../utils/email/authEmail";
 import { genrateJWT } from "../utils/jwt";
+import { EmailService } from "../utils/email/email.sevice";
 
 
 export class AuthController {
@@ -29,8 +30,8 @@ export class AuthController {
 
       user.token=token;
 
-      // const emailServise = new EmailService();
-      // await emailServise.sendEmailWithToken(user.email, user.name, user.token);
+       const emailServise = new EmailService();
+       await emailServise.sendEmailWithToken(user.email, user.name, user.token);
 
       AuthEmail.sendConfirmationEmail({
         email: user.email,
