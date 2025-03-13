@@ -124,7 +124,7 @@ export class AuthController {
 
       //enviar email
       const emailServise = new EmailService();
-      await emailServise.sendEmailWithToken(user.email, user.name, user.token);
+      await emailServise.sendPasswordResetToken(user.email, user.name, user.token);
 
 
      // AuthEmail.sendPasswordResetToken(user);

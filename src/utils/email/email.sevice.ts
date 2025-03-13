@@ -38,7 +38,7 @@ export class EmailService {
     const htmlBody = `
          <p>Hola ${user}, has creado tu cuenta en CashTracker ya casi esta todo listo , solo debes confirmar tu cuenta</p>
             <p>Visita el siguiente enlace:</p>
-            <a href="http://localhost:5173/auth/confirm-account" >Confirmar Cuenta</a>
+            <a href="${process.env.FRONTEND_URL}/auth/confirm-account" >Confirmar Cuenta</a>
             <p>E ingresa el codigo: <b>${token}</b></p>
             <p>Este token expira en 10 minutos</p>
          `;
