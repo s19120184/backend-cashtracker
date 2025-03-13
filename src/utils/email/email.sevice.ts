@@ -45,4 +45,17 @@ export class EmailService {
 
     return this.sendEmail({ to, subject, htmlBody });
   }
+
+  async sendPasswordResetToken( to: string | string[], user: String, token: string){
+    const subject = "Olvidaste tu password";
+    const htmlBody= `<p>Hola ${user},Has solicitado restablecer tu password.</p>
+          <p>Visita el siguiente enlace:</p>
+          <a href="${process.env.FRONTEND_URL}/auth/new-password" >Restablecer password</a>
+          <p>E ingresa el codigo: <b>${token}</b></p>
+          <p>Este token expira en 10 minutos</p>
+          `
+
+       return this.sendEmail({ to, subject, htmlBody });
+  
+  }
 }

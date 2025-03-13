@@ -123,7 +123,11 @@ export class AuthController {
       await user.save();
 
       //enviar email
-      AuthEmail.sendPasswordResetToken(user);
+      const emailServise = new EmailService();
+      await emailServise.sendEmailWithToken(user.email, user.name, user.token);
+
+
+     // AuthEmail.sendPasswordResetToken(user);
       res.json("Revisa tu E-mail y sigue las instrucciones");
     } catch (error) {
       res.status(500).json({ error: "Hubo un Error" });
